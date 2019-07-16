@@ -1,0 +1,97 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+f1_scores = np.load('f1_scores_vvKT_final.npy')
+kid_f1 = f1_scores[:,1]
+tum_f1 = f1_scores[:,2]
+
+kid_volumes = np.load('kid_volumes.npy')
+kid_volumes /= 1e6
+tum_volumes = np.load('tum_volumes.npy')
+tum_volumes /= 1e6
+
+cases = np.linspace(0,209,210)
+
+##plt.figure(0)
+##plt.subplot(121)
+##plt.scatter(cases,kid_volumes,c='b')
+##plt.ylim([-0.1, 1.2]),plt.yticks(ticks=[0,1.2],labels=['0','1.2M'])
+##plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'])
+##plt.title('Kidney'),plt.xlabel('Case'),plt.ylabel('Volume (Norm. Units)')
+##plt.subplot(122)
+##plt.scatter(cases,tum_volumes,c='b')
+##plt.ylim([-0.1, 1.2]),plt.yticks(ticks=[0,1.2],labels=['0','1.2M'])
+##plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'])
+##plt.title('Tumour'),plt.xlabel('Case')
+##plt.tight_layout()
+
+##plt.figure(1)
+##plt.subplot(121)
+##plt.scatter(kid_volumes,kid_f1,c='b')
+##plt.ylim([-0.1, 1]), plt.xlim([-0.2,1.2]), plt.xticks(ticks=[0,1.2],labels=['0','1.2M'])
+##plt.yticks(ticks=[0,1])
+##plt.title('Kidney'),plt.xlabel('Volume (Norm. Units)'),plt.ylabel('F1 Score')
+##plt.subplot(122)
+##plt.scatter(tum_volumes,tum_f1,c='b')
+##plt.ylim([-0.1, 1]), plt.xlim([-0.2,1.2]), plt.xticks(ticks=[0,1.2],labels=['0','1.2M'])
+##plt.yticks(ticks=[0,1])
+##plt.title('Tumour'),plt.xlabel('Volume (Norm. Units)')
+
+##plt.figure(2)
+##plt.subplot(121)
+##plt.scatter(cases,kid_f1,c='r')
+##plt.ylim([-0.1, 1])
+##plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'])
+##plt.title('Kidney'),plt.xlabel('Case'),plt.ylabel('F1 Score')
+##plt.subplot(122)
+##plt.scatter(cases,tum_f1,c='r')
+##plt.ylim([-0.1, 1])
+##plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'])
+##plt.title('Tumour'),plt.xlabel('Case')
+##plt.tight_layout()
+
+size = 7.5
+plt.figure(figsize=(4,5))
+plt.subplot(321)
+plt.scatter(cases,kid_volumes,s=size,c='b')
+plt.ylim([-0.1, 1.2]),plt.yticks(ticks=[0,1.2],labels=['0','1.2M'],fontsize=8)
+plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'],fontsize=8)
+plt.title('Kidney',fontstyle='italic'),plt.ylabel('Volume',fontsize=9)
+plt.xlabel('Case',fontsize=9)
+##plt.text(-120,1.25,'a)',va='bottom',ha='left')
+plt.subplot(322)
+plt.scatter(cases,tum_volumes,s=size,c='b')
+plt.ylim([-0.1, 1.2]),plt.yticks(ticks=[0,1.2],labels=['0','1.2M'],fontsize=8)
+plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'],fontsize=8)
+plt.xlabel('Case',fontsize=9)
+plt.title('Tumour',fontstyle='italic')
+##plt.text(-120,1.25,'b)',va='bottom',ha='left')
+plt.subplot(323)
+plt.scatter(cases,kid_f1,s=size,c='r')
+##plt.ylim([-0.1, 1]),plt.yticks(ticks=[0,1],fontsize=8)
+##plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'],fontsize=8)
+plt.xlabel('Case',fontsize=9),plt.ylabel('F1 Score',fontsize=9)
+plt.subplot(324)
+plt.scatter(cases,tum_f1,s=size,c='r')
+plt.ylim([-0.1, 1]),plt.yticks(ticks=[0,1],fontsize=8)
+plt.xlim([0,209]), plt.xticks(ticks=[0,209],labels=['0','209'],fontsize=8)
+plt.xlabel('Case',fontsize=9)
+plt.subplot(325)
+plt.scatter(kid_volumes,kid_f1,s=size,c='g')
+plt.ylim([-0.1, 1]), plt.xlim([-0.2,1.2])
+plt.xticks(ticks=[0,1.2],labels=['0','1.2M'],fontsize=8)
+plt.yticks(ticks=[0,1],fontsize=8)
+plt.xlabel('Volume',fontsize=9),plt.ylabel('F1 Score',fontsize=9)
+plt.subplot(326)
+plt.scatter(tum_volumes,tum_f1,s=size,c='g')
+plt.ylim([-0.1, 1]), plt.xlim([-0.2,1.2])
+plt.xticks(ticks=[0,1.2],labels=['0','1.2M'],fontsize=8)
+plt.yticks(ticks=[0,1],fontsize=8)
+plt.xlabel('Volume',fontsize=9)
+plt.tight_layout()
+plt.savefig('FigureA.png',dpi=600)
+plt.show()
+
+
+
+
