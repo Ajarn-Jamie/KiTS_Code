@@ -1,1 +1,1 @@
-# Data from the KiTS 2019 Grand-Challenge after pre-processing
+# This repository contains code used for the KiTS19 grand-challenge.
